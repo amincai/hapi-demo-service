@@ -5,7 +5,12 @@ let RestHapi = require('rest-hapi');
  
 async function api(){
     try {
-      let server = Hapi.Server({ port: 3001 });
+      let server = Hapi.Server({ 
+        //Amin: host is important for IOS system. If missing host, the in IOS, it would use machinename.local to replace localhost
+        //, if post or get request raised ,  there's no response.
+        host: 'localhost',
+        port: 3001 }
+      );
 
       let config = {
           appTitle: "hapi-demo-service",
